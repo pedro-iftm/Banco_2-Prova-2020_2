@@ -6,8 +6,9 @@ CREATE TABLE customer (
   name       varchar(50) NOT NULL,
   address_id varchar(36),
   telephone  varchar(14) NOT NULL,
-  gender     varchar(1),
-  birth_date date
+  gender     ENUM('F', 'M'),
+  birth_date date,
+  cpf varchar(11) NOT NULL
 );
 
 CREATE TABLE movie (
