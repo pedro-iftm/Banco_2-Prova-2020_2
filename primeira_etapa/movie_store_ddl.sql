@@ -8,7 +8,7 @@ CREATE TABLE customer (
   telephone  varchar(14) NOT NULL,
   gender     ENUM('F', 'M'),
   birth_date date,
-  cpf varchar(11) NOT NULL
+  cpf varchar(11) NOT NULL UNIQUE
 );
 
 CREATE TABLE movie (
