@@ -1,6 +1,4 @@
-// Para ver o modelo conceitual e logico:
-// - Acesse: https://dbdiagram.io/d
-// - E cole as linhas abaixo e clique em highliht
+// https://dbdiagram.io/d
 
 Table customer as C {
     id         varchar(11) [pk, note: 'CPF without special characters']

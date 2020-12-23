@@ -7,8 +7,8 @@ begin
     declare gender varchar(8);
     set formated_cpf=(select cpf_mask(cpf));
     set gender=(
-        select case when c.gender = 'M' then 'Male'
-        else 'Female' end
+        select case when c.gender = 'M' then 'Masculino'
+        else 'Feminino' end
         from customer c where c.cpf = cpf
     );
     select
@@ -29,3 +29,5 @@ begin
 end $
 
 delimiter ;
+
+/* call get_customer('97438685646'); */

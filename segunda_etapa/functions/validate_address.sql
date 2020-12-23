@@ -13,7 +13,7 @@ begin
     if (neighborhood is not null and (address is null or zipcode is null)) then
         return false;
     end if;
-    if (state is not null and (address is null or zipcode is null or neighborhood is null or address is null)) then
+    if (state is not null and (address is null or zipcode is null or neighborhood is null or city is null)) then
         return false;
     end if;
     return true;

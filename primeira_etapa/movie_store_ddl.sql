@@ -1,43 +1,44 @@
-CREATE DATABASE video_store;
-USE video_store;
+drop database video_store;
+create database video_store;
+use video_store;
 
-CREATE TABLE customer (
-  id         varchar(36) PRIMARY KEY,
-  name       varchar(50) NOT NULL,
+create table customer (
+  cpf        varchar(11) primary key,
+  name       varchar(50) not null,
   address_id varchar(36),
-  telephone  varchar(14) NOT NULL,
-  gender     ENUM('F', 'M'),
-  birth_date date,
-  cpf varchar(11) NOT NULL UNIQUE
+  telephone  varchar(14) not null,
+  gender     enum('f', 'm'),
+  birth_date date
 );
 
-CREATE TABLE movie (
-  id       varchar(36)  PRIMARY KEY,
-  title    varchar(100) NOT NULL,
-  synopsis varchar(250) NOT NULL,
-  gender   varchar(50)  NOT NULL
+create table movie (
+  id                varchar(36)    primary key,
+  title             varchar(100)   not null,
+  synopsis          varchar(250)   not null,
+  suggested_value   decimal(10, 2) not null,
+  gender            varchar(50)    not null
 );
 
-CREATE TABLE rent (
-  id          varchar(36)   PRIMARY KEY,
-  customer_id varchar(36),
-  movie_id    varchar(36),
-  rented      date          DEFAULT (now()),
-  returned    date,
-  value       decimal(10,2) NOT NULL
+create table rent (
+  id                int          auto_increment primary key,
+  customer_id       varchar(36),
+  movie_id          varchar(36),
+  rented            date          default (now()),
+  returned          date,
+  value             decimal(10,2)
 );
 
-CREATE TABLE address (
-  id           varchar(36)  PRIMARY KEY,
-  address      varchar(250) NOT NULL,
-  zipcode      varchar(10)   NOT NULL,
-  city         varchar(50)  DEFAULT "Uberlândia",
-  neighborhood varchar(50)  NOT NULL,
-  state        varchar(50)  DEFAULT "Minas Gerais"
+create table address (
+  id           varchar(36)  primary key,
+  address      varchar(250) not null,
+  zipcode      varchar(10)  not null,
+  city         varchar(50)  default "Uberlândia",
+  neighborhood varchar(50)  not null,
+  state        varchar(50)  default "Minas gerais"
 );
 
-ALTER TABLE customer ADD FOREIGN KEY (address_id) REFERENCES address (id);
+alter table customer add foreign key (address_id) references address (id);
 
-ALTER TABLE rent ADD FOREIGN KEY (customer_id) REFERENCES customer (id);
+alter table rent add foreign key (customer_id) references customer (cpf);
 
-ALTER TABLE rent ADD FOREIGN KEY (movie_id) REFERENCES movie (id);
+alter table rent add foreign key (movie_id) references movie (id);
