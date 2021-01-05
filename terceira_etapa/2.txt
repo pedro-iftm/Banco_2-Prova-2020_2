@@ -1,0 +1,4 @@
+O controle de acesso garante controle a visualização e alteração de dados e permissões, gerando mais segurança para o banco
+Por exemplo:
+    - Terceiros acessando a base de dados, sem problemas
+    - Garantia de que apenas pessoas com conhecimentos, cargos (etc) consigam executar certas alterações no banco de dados
